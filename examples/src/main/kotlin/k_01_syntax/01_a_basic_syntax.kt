@@ -17,23 +17,3 @@ fun functionThatDoesStuffAndReturnsTrue() : Boolean{
 
 
 
-
-
-
-
-
-
-
-
-// Functions declared here (outside classes) are called "top level functions"
-
-
-// class functions (methods) are closed by default (no overload possible)
-
-
-// fields and functions are public by default
-
-
-
-
-

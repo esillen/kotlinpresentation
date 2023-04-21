@@ -1,4 +1,4 @@
-package k_99_bonus
+package k_01_syntax
 
 class ShoppingBag {
     val things : List<Thing>
