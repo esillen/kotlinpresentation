@@ -1,4 +1,5 @@
 package k_02_nullable
+
 class Person(val firstName : String, val middleName : String?, val lastName : String)
 
 
@@ -11,10 +12,10 @@ fun printPersonSloppily(person : Person) {
 fun getAllMiddleNames(people : Set<Person>) : Set<String> {
     val middleNames : MutableSet<String> = mutableSetOf()
 
-    // This can be achieved more clean using functional programming, but we're making a point here
+    // This can be made more neat, but we're making a point here
     for (person in people) {
         if (person.middleName != null) {
-            middleNames.add(person.middleName) // Can never result in an NullPointerException
+            middleNames.add(person.middleName) // Can never result in a NullPointerException
         }
     }
 
@@ -24,7 +25,7 @@ fun getAllMiddleNames(people : Set<Person>) : Set<String> {
 
 
 fun printPersonNeatly(person : Person) {
-    // Another cool Kotlin feature! If-statements have return values and can be part of an expression
+    // If-statements have return values and can be part of an expression
     val middlePart = if (person.middleName != null) {
         " ${person.middleName} "
     } else {
@@ -33,6 +34,7 @@ fun printPersonNeatly(person : Person) {
     val presentableName = "${person.firstName}${middlePart}${person.lastName}"
     println("this is $presentableName")
 }
+
 
 
 
@@ -69,3 +71,6 @@ fun main() {
     println(pelle.middleName!!)
     // This is basically never recommended.
 }
+
+// TODO:
+// Try changing middleName to var, why no compile?

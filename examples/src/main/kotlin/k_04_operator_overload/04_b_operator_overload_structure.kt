@@ -1,10 +1,11 @@
-package k_04_operator_overload// MyStruct interface:
+package k_04_operator_overload
+// MyStruct:
 // set size of items
 // can get and set items at indicies inside the array bounds
 // Has method for checking if item is in the structure
 // setting and getting outside bounds throws some exception
-// getting unset item throws some exception*
-// does not allow setting item to null*
+// getting unset item throws some exception
+// does not allow setting item to null
 
 
 

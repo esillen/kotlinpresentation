@@ -1,6 +1,6 @@
 package k_05_extensions
 
-import k_05_extensions.extension_functions.Person
+import k_05_extensions.person.Person
 
 val erik = Person("Erik", emptySet())
 val andreas = Person("Andreas", emptySet())

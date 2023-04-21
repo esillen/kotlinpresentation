@@ -1,12 +1,11 @@
-package k_01_syntax
-
+package k_99_bonus
 
 
 // range of elements
 val oneToTen : IntRange = 1..10 // <-- represents [1,2,3,4,5,6,7,8,9,10].
 val theSum = oneToTen.map {
-        it + 3
-    }.sum()
+    it + 3
+}.sum()
 
 
 
@@ -35,3 +34,40 @@ fun breakAndSideEffect() {
 //  }
 //  System.out.println("some important logging or something);
 //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+val theTruth = "KOTLIN IS AWESOME"
+
+val is_equal : Boolean = theTruth == "KOTLIN IS AWESOME"        // <-- same as java's .equals(), is actually syntactic sugar.
+val points_to_same : Boolean = theTruth === "KOTLIN IS AWESOME" // <-- same as java's ==  (probably true here due to JVM's string pool)
+
+
