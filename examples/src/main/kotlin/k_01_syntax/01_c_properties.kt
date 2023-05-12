@@ -1,18 +1,16 @@
 package k_01_syntax
 
 class ShoppingBag {
-    val things : List<Thing>
-        get() = _things.toList()
-    // property getter.
 
     var name : String = "unnamed"
-        private set
-    // property setter is private, getter public by default.
-
-    // getters/setters can also be declared later when needed. No need to always add getters/setters pre-emptively.
-
+        private set // property setter is private, getter public by default.
 
     private val _things = mutableListOf<Thing>()
+
+    val things : List<Thing>
+        get() = _things.toList() // property getter.
+
+    // getters/setters can also be declared later when needed. No need to always add getters/setters pre-emptively.
 
     fun addThing(thing: Thing) {
         _things.add(thing)
@@ -33,10 +31,9 @@ fun test() {
 
     val thingsInTheBag  = bag.things // Yes! No bag.getThings() in my codebase!
 
+    // bag.things = listOf() // Does not work! val doesn't have setter
 
-    // bag.things = listOf() //Does not work! val doesn't have setter :D
-
-    // bag.name = "boring bag" // Does not work! setter is private
+    // bag.name = "bag that got messed with" // Does not work! setter is private
 
 
 }

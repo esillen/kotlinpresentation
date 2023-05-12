@@ -10,7 +10,7 @@ val user = User("esillen", "esillen@mail.com", 1337)
 
 
 // Beefier class declaration
-// Default parameter
+// Default parameters
 class Monster(val health : Int = 100, val name : String) {
 
     // Non-constructor fields go here
@@ -86,8 +86,6 @@ object World {
 }
 
 
-
-// Like Java's public static void main(String[] args) {...}
 fun main() {
 
     World.presentToUser()

@@ -1,6 +1,6 @@
 import java.awt.Color
 
-@DslMarker
+@DslMarker // Required to change core kotlin behaviour
 annotation class MonsterBuilderPart
 
 @MonsterBuilderPart
@@ -63,6 +63,11 @@ val erikSuperMonster = monster {
         eye(Color.BLUE)
     }
     leg {
+        toe()
+        toe()
+        toe()
+    }
+    leg{
         toe()
         toe()
         toe()

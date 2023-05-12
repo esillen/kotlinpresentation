@@ -1,56 +1,44 @@
 package k_02_nullable
 
-class Person(val firstName : String, val middleName : String?, val lastName : String)
-
-
-fun printPersonSloppily(person : Person) {
-    println("this is ${person.firstName} ${person.middleName} ${person.lastName}")
-}
-
-
-
-fun getAllMiddleNames(people : Set<Person>) : Set<String> {
-    val middleNames : MutableSet<String> = mutableSetOf()
-
-    // This can be made more neat, but we're making a point here
-    for (person in people) {
-        if (person.middleName != null) {
-            middleNames.add(person.middleName) // Can never result in a NullPointerException
-        }
-    }
-
-    return middleNames
-}
-
-
-
-fun printPersonNeatly(person : Person) {
-    // If-statements have return values and can be part of an expression
-    val middlePart = if (person.middleName != null) {
-        " ${person.middleName} "
-    } else {
-        " "
-    }
-    val presentableName = "${person.firstName}${middlePart}${person.lastName}"
-    println("this is $presentableName")
-}
-
 
 
 
 
 fun main() {
 
+    class Person(val firstName : String, val middleName : String?, val lastName : String) {
+
+        /*fun processMiddleName() {
+            val middleNameRef : String = middleName // Does not work!
+            // ... Do stuff ...
+        }*/
+
+        fun processFirstName() {
+            val nullableFirstNameRef : String? = firstName // Does work but IntelliJ complains
+            if (firstName == null) { // Does work but IntelliJ complains
+                // ... Do stuff ...
+            }
+        }
+
+    }
+
     val pelle = Person("Pelle", null, "Plutt")
     val jossan = Person("Jossan", "Marit", "Svensson")
     val bosse = Person("Bosse", "Fredrik", "Karlsson")
 
 
+    fun getAllMiddleNames(people : Set<Person>) : Set<String> {
+        val middleNames : MutableSet<String> = mutableSetOf()
 
-    printPersonSloppily(pelle)
-    printPersonSloppily(jossan)
-    printPersonSloppily(bosse)
+        // This can be neatified, but we're making a point here
+        for (person in people) {
+            if (person.middleName != null) {
+                middleNames.add(person.middleName) // Can never result in a NullPointerException
+            }
+        }
 
+        return middleNames
+    }
 
 
     val people = setOf(pelle, jossan, bosse)
@@ -61,15 +49,24 @@ fun main() {
     }
 
 
+    fun printPerson(person : Person) {
+        val middlePart = if (person.middleName != null) {
+            " ${person.middleName} "
+        } else {
+            " "
+        }
+        val presentableName = "${person.firstName}${middlePart}${person.lastName}"
+        println("this is $presentableName")
+    }
 
-    printPersonNeatly(pelle)
-    printPersonNeatly(jossan)
-    printPersonNeatly(bosse)
+    printPerson(pelle)
+    printPerson(jossan)
+    printPerson(bosse)
 
 
     // And last, if you want to you can get the null pointer exception with the !! (bang-bang) operator:
     println(pelle.middleName!!)
-    // This is basically never recommended.
+    // This is recommended to avoid and is often possible and easy to work around with the language.
 }
 
 // TODO:

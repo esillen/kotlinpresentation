@@ -19,6 +19,4 @@ fun main() {
     val ones = Vector2(1.0, 1.0)
     val result = ones * 5.0 + ones * 7.0 + ones * 9.0
     println(result)
-
-
 }

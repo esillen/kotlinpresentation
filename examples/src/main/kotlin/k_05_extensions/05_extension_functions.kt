@@ -33,7 +33,7 @@ fun Int.isEven() : Boolean {
 }
 
 
-// Can also be used for more interesting types
+// Can also be used for generics!
 fun Set<Person>.calcNumFriends() : Int {
     return this.sumOf {
         it.friends.size
