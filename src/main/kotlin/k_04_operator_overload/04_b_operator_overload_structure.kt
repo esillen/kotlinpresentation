@@ -1,15 +1,5 @@
 package k_04_operator_overload
-// MyStruct:
-// set size of items
-// can get and set items at indicies inside the array bounds
-// Has method for checking if item is in the structure
-// setting and getting outside bounds throws some exception
-// getting unset item throws some exception
-// does not allow setting item to null
 
-
-
-// New Kotlin feature! data class gives us immutability, toString, hash and equals!
 class MyStruct<T>(size : Int) {
 
     private val items  = Array<Any?>(size){}
@@ -34,13 +24,13 @@ class MyStruct<T>(size : Int) {
 fun main() {
     val struct = MyStruct<String>(5);
     struct[0] = "Kotlin"
-    struct[1] = "Har"
-    struct[2] = "Många"
-    struct[3] = "Bra"
+    struct[1] = "Has"
+    struct[2] = "Many"
+    struct[3] = "Good"
     struct[4] = "Features"
 
     if ("Kotlin" in struct) {
-        println("Bra språk!")
+        println("Good stuff!")
         struct[1] = struct[0]
     }
 

@@ -10,12 +10,14 @@ class Monster() {
 
     fun head (init: MonsterHead.() -> Unit) : MonsterHead {
         val head = MonsterHead()
+        head.init()
         bodyParts.add(head)
         return head
     }
 
     fun leg (init: MonsterLeg.() -> Unit) : MonsterLeg {
         val leg = MonsterLeg()
+        leg.init()
         bodyParts.add(leg)
         return leg
     }
@@ -53,27 +55,41 @@ class MonsterEye(val color: Color)
 
 
 fun monster(init: Monster.() -> Unit) : Monster {
-    return Monster()
+    val monster = Monster()
+    monster.init()
+    return monster
 }
 
 
-val erikSuperMonster = monster {
-    head {
-        eye(Color.GREEN)
-        eye(Color.BLUE)
+
+fun main() {
+
+    val superMonster = monster {
+        head {
+            eye(Color.GREEN)
+            eye(Color.BLUE)
+            eye(Color.BLUE)
+            eye(Color.BLUE)
+            eye(Color.BLUE)
+        }
+        leg {
+            toe()
+            toe()
+            toe()
+        }
+        leg{
+            toe()
+            toe()
+            toe()
+        }
     }
-    leg {
-        toe()
-        toe()
-        toe()
-    }
-    leg{
-        toe()
-        toe()
-        toe()
-    }
+
+    print("done")
+
 }
 
 
-// TODO:
-// Now remove the DslMarker and add head { head { ...
+// NOTE:
+// To prove that this is tricky to implement
+// remove the DslMarker and add head { head { ...
+// Or remove the init() call and look at the result

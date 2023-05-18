@@ -1,15 +1,17 @@
-package k_03_lambdas
+package k_06_lambdas
 
+
+// TODO: exempel: middleware
 
 // Remember kotlin function type syntax.
 // (...ArgumentTypes) -> ResultType
 
 
 
-// Let's get into high as balls functions!
+// Let's make our higher order functions high as balls!
 // This beautiful mess is fine!
-// (A function taking a boolean that returns a function that takes an int and a string that returns a set of functions that take int as argument and returns a string.)
 val myCrazyFunction : (Boolean) -> (Int, String) -> List<(Int) -> String> = fun (aBool : Boolean) : (Int, String) -> List<(Int) -> String> {
+// (A function taking a boolean that returns a function that takes an int and a string that returns a set of functions that take int as argument and returns a string.)
 
     if (aBool) {
         // returns a function "as promised"
@@ -65,4 +67,4 @@ fun main() {
 }
 
 
-// Now do this in java. I dare you all!
+// Challenge (that I will not attempt) do this in Java!

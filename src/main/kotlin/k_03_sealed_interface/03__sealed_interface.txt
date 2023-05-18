@@ -1,0 +1,16 @@
+
+
+
+### 03 - Sealed interface
+
+# Basic idea
+
+By giving all implementations to the compiler,
+it provides compilation errors if the code path does not exhaust all options.
+
+
+
+Let's look at a great use case
+We want to handle results from a request.
+Anyone who worked at [internal project] should listen extra carefully!
+

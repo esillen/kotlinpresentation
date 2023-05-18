@@ -3,71 +3,88 @@ package k_02_nullable
 
 
 
-
 fun main() {
 
     class Person(val firstName : String, val middleName : String?, val lastName : String) {
 
-        /*fun processMiddleName() {
-            val middleNameRef : String = middleName // Does not work!
-            // ... Do stuff ...
-        }*/
+        fun doSomething() {
 
-        fun processFirstName() {
-            val nullableFirstNameRef : String? = firstName // Does work but IntelliJ complains
-            if (firstName == null) { // Does work but IntelliJ complains
+            //val middleNameRef : String = middleName // Does not work!
+
+            val nullableFirstNameRef : String? = firstName // nullable assignment from normal works but IntelliJ complains
+
+            if (firstName == null) { // Null equality works but IntelliJ complains
                 // ... Do stuff ...
             }
         }
 
     }
 
-    val pelle = Person("Pelle", null, "Plutt")
-    val jossan = Person("Jossan", "Marit", "Svensson")
-    val bosse = Person("Bosse", "Fredrik", "Karlsson")
+    val pelle = Person("Pelle", null, "Svensson")
+    val jossan = Person("Jossan", "Marit", "Svensdotter")
 
 
+
+
+
+
+    fun giveBirth(parent: Person, gender : String, middleName: String?) : Person {
+        val childFirstName = if (gender == "boy") {
+            parent.firstName + "sson"
+        } else if (gender == "girl") {
+            parent.firstName + "sdotter"
+        } else {
+            parent.firstName + "sbarn"
+        }
+        return Person(childFirstName, middleName, parent.lastName)
+    }
+    // In Java you would have to make sure that firstName and lastName is never null. Something like this:
+
+    // if (parent.firstName != null && parent.lastName != null) {
+    //   ... do stuff ...
+    // } else {
+    //   ... don't give birth?
+    // }
+
+    // But where do you put that logic?
+    // What do you do if something is null?
+    // What if it becomes null in another thread AFTER your null check?
+
+    // Best answer is to "just write good code" but Kotlin avoids this by having non-nullable (and immutable) be the default.
+    // And strongly guarding code not written this way
+
+    // Yes @NotNull etc. exists, but they are weak guards that only work if used everywhere. And they're ugly.
+
+
+
+
+
+
+    // Syntactic sugar example
     fun getAllMiddleNames(people : Set<Person>) : Set<String> {
         val middleNames : MutableSet<String> = mutableSetOf()
 
-        // This can be neatified, but we're making a point here
         for (person in people) {
             if (person.middleName != null) {
-                middleNames.add(person.middleName) // Can never result in a NullPointerException
+                middleNames.add(person.middleName) // Can never result in a NullPointerException.
+                                                   // Notice the smart cast from String? to String.
             }
         }
-
         return middleNames
     }
 
-
-    val people = setOf(pelle, jossan, bosse)
-    val middleNames = getAllMiddleNames(people)
-    println("All middle names:")
-    middleNames.forEach {
-        println(it) // "it" is the default name assigned to single argument lambdas
-    }
+    // NOTE:
+    // Try changing middleName to var in Person. Why no compile?
 
 
-    fun printPerson(person : Person) {
-        val middlePart = if (person.middleName != null) {
-            " ${person.middleName} "
-        } else {
-            " "
-        }
-        val presentableName = "${person.firstName}${middlePart}${person.lastName}"
-        println("this is $presentableName")
-    }
-
-    printPerson(pelle)
-    printPerson(jossan)
-    printPerson(bosse)
 
 
-    // And last, if you want to you can get the null pointer exception with the !! (bang-bang) operator:
+    // And last, if you want to, you can get the null pointer exception with the !! (bang-bang) operator:
     println(pelle.middleName!!)
-    // This is recommended to avoid and is often possible and easy to work around with the language.
+
+    // Use of !! is strongly discouraged.
+    // Use of !! is usually avoidable outside core libraries.
+
 }
 
-// TODO:
-// Try changing middleName to var, why no compile?
+

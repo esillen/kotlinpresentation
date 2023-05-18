@@ -1,0 +1,11 @@
+
+
+
+### 02 - NULLABILITY IN KOTLIN ###
+
+# Basic idea:
+
+Let the compiler help you with avoiding null pointer exceptions with clever syntax.
+
+
+

@@ -9,9 +9,15 @@ val user = User("esillen", "esillen@mail.com", 1337)
 
 
 
+
+
+
+
+
+
 // Beefier class declaration
-// Default parameters
-class Monster(val health : Int = 100, val name : String) {
+class Monster(val health : Int, val name : String) {
+
 
     // Non-constructor fields go here
     var healthLeft : Int = health
@@ -23,24 +29,21 @@ class Monster(val health : Int = 100, val name : String) {
     }
 
 
-    // init block(s) is a constructor appendix
+    // init block runs like a constructor appendix
     init {
         println("Let me present myself, I am $name!") // String interpolation
     }
 
 
-    // "member function"
+    // member function
     fun takeDamage(damage : Int) {
-        println("$name takes $damage damage.")
         healthLeft -= damage
         if (healthLeft < 0) {
             die()
-        } else {
-            println("$name is still alive!")
         }
     }
 
-    // functions are public by default
+    // functions are public but closed by default
     private fun die() {
         println("Urrrrgh... Tell my children that I love them!")
     }
@@ -49,19 +52,21 @@ class Monster(val health : Int = 100, val name : String) {
 
 
 // Instantiate Monsters
-val seal = Monster(health = 10, "Seal")
-val ox = Monster(name = "Ox") // health = 100 by default
+val seal = Monster(10, "Seal")
+val ox = Monster(name = "Ox", health = 100) // Can change position by naming variables
 val damagedLion = Monster(1000, "Lion", 10) // Using the secondary constructor
+
+
+
+
+
+
 
 
 
 // Interface declaration, just like Java
 interface Hero {
-    fun attack(monster : Monster) // <-- implementing class must implement or be abstract
-
-    fun impress() {
-        println("I've killed two birds with one stone!") // <-- default implementation
-    }
+    fun attack(monster : Monster)
 }
 
 
@@ -70,10 +75,11 @@ interface Hero {
 // Define and instantiate an object implementing the Hero interface
 val hero =  object : Hero {
     override fun attack(monster : Monster) {
-        println("take that!!")
         monster.takeDamage(50);
     }
 }
+
+
 
 
 // We can also create an arbitrary object that doesn't implement anything.
@@ -88,11 +94,6 @@ object World {
 
 fun main() {
 
-    World.presentToUser()
+    World.presentToUser() // Use the object immediately!
 
-    hero.attack(seal)
-    hero.attack(ox)
-
-
-    println(seal.healthLeft)
 }

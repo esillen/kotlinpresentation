@@ -2,52 +2,47 @@ package k_05_extensions
 
 import k_05_extensions.person.Person
 
-val erik = Person("Erik", emptySet())
-val andreas = Person("Andreas", emptySet())
-val puma = Person("Puma", emptySet())
+
+val erik = Person("Erik", mutableSetOf())
+val andreas = Person("Andreas", mutableSetOf())
+val puma = Person("Puma", mutableSetOf())
 
 
 // This adds the function "addFriend" to be used on any object with the Person type!
 fun Person.addFriend(newFriend : Person) {
-    println("A new friendship was formed between ${this.name} and ${newFriend.name}!")
-    println("This means ${this.name} got a new friend AND ${newFriend.name} also got a new friend!!")
     this.friends.add(newFriend)
-    newFriend.friends.add(this)
 }
 
+// In Java you would probably do something like:
+// private static void int addFriendToPerson(Person person, Person otherPerson) {...}
 
-fun Person.befriendFriendsOfFriend(person : Person) {
-    val newFriends = person.friends
-    this.friends.addAll(newFriends)
-}
+// Problems: Who's the target? First argument? That's just convention.
+// You also need to be more specific with naming or cause confusion.
 
-fun Person.countLettersOfFriends() {
-    this.friends.sumOf {
-        it.name.count()
-    }
-}
 
-// We're cool kids so we can extend stdlib
+
+
+// We're cool kids, so we can extend standard lib if we wish
 fun Int.isEven() : Boolean {
     return this % 2 == 0
 }
 
 
-// Can also be used for generics!
+// Extensions also works for generics!
 fun Set<Person>.calcNumFriends() : Int {
     return this.sumOf {
         it.friends.size
     }
 }
-// In java-land you would probably do something like
-// private void int calcNumFriends(Set<Person> people)  <-- ewww disgusting!! Because you actually want to do this on the type, not pass as argument!
 
 
 fun main() {
     val people = setOf(erik, andreas, puma)
 
     erik.addFriend(andreas)
+    andreas.addFriend(erik)
     erik.addFriend(puma)
+    puma.addFriend(erik)
 
     println("number of friendships ${people.calcNumFriends()}")
 }

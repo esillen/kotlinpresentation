@@ -1,50 +1,46 @@
 package k_01_syntax
 
-import java.lang.IllegalStateException
+
+
+
 
 
 // Everything can be declared top-level!
 
-val theTruth : String = "KOTLIN IS AWESOME" // Declaring an immutable String, setting its value
-var counter : Int = 0 // Declaring a mutable Int, this can be altered
+val theTruth : String = "KOTLIN IS AWESOME" // immutable String
+var counter : Int = 0 // mutable Int
 
-val myName = "Erik Sillén" // If type can be inferred, type is not required to be written out.
+// theTruth = "KOTLIN IS A COOL LANGUAGE" // Would not be allowed! val's cannot be re-assigned
+// counter++  // This would be fine
 
 
 
-// Function declaration. Type (Boolean) comes last after colon.
-fun functionThatDoesStuffAndReturnsABoolean() : Boolean {
-    counter -= 1
 
-    // THE_TRUTH = "KOTLIN IS A COOL LANGUAGE" // Not allowed! val's cannot be re-assigned
-    counter++  // This is fine because counter is a var.
 
+
+// Function declaration
+fun login(input : String) : String {
+
+    val secretPassword = "kotlinkotlinkotlin"
 
     // If-statements have return values and can be part of an expression
-    val result = if (counter == 0) {
-        "still zero"
+    val result = if (input === secretPassword) { // === for reference equality
+        "user access!"
+    } else if (input == "superOverridePassword") { // == for equality
+        "admin access!"
     } else {
-        "no longer zero!"
+        "denied!"
     }
 
-    // == comparison is like .equal in java (equality).
-    // === is like java's == (same reference)
-    return if (result == "still zero") {
-        false
-    } else if (result == "no longer zero!"){
-        true
-    } else {
-        throw IllegalStateException("you messed up!")
-    }
-
-
+    return result
 }
 
-// main is the point function for a kotlin file
+
+
+
+
+// main() is the entry point function for a kotlin file
 fun main() {
-    val returnValue = functionThatDoesStuffAndReturnsABoolean()
-    print(returnValue)
+    println("Hello there!")
 }
-
-
 

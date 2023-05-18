@@ -1,0 +1,29 @@
+
+
+
+
+### 05 - Extension function
+
+# Basic idea:
+
+Allow extension of classes (and more) without changing the source code and without reflection.
+
+
+
+Let's set the stage:
+
+You need a function that "makes a copy but changes a field"
+
+Person("Anna", ...) -> Person("Klara", ...)
+
+
+
+You don't want to change the class itself (or you can't)
+
+Java solution:
+
+private Thing makeCopy(Thing oldThing, ThingField newField)
+
+
+
+Let's look at extension functions that help with this.

@@ -1,39 +1,61 @@
 package k_01_syntax
 
-class ShoppingBag {
+import java.lang.IllegalArgumentException
+
+// NOTE:
+// Compare with JavaBuilding.java
+
+
+
+
+
+
+
+class Building {
+
+    var owner : LegalPerson = LegalPerson("The state")
 
     var name : String = "unnamed"
-        private set // property setter is private, getter public by default.
+        private set // Makes the setter private
 
-    private val _things = mutableListOf<Thing>()
+    var color : String = "Gray"
+        set(value) {
+            if (value == "UltraUgly") {
+                throw IllegalArgumentException("too ugly")
+            }
+            field = value
+        }
 
-    val things : List<Thing>
-        get() = _things.toList() // property getter.
-
-    // getters/setters can also be declared later when needed. No need to always add getters/setters pre-emptively.
-
-    fun addThing(thing: Thing) {
-        _things.add(thing)
-        name = "bag with ${thing.name}"
-    }
 }
 
 
 
+
+fun main() {
+    val building = Building()
+    building.color = "UltraNice™"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class LegalPerson(val name: String)
 class Thing(val name: String)
-
-fun test() {
-    val bag = ShoppingBag()
-    bag.addThing(Thing("toothbrush"))
-    bag.addThing(Thing("grocery"))
-
-    println(bag.name)
-
-    val thingsInTheBag  = bag.things // Yes! No bag.getThings() in my codebase!
-
-    // bag.things = listOf() // Does not work! val doesn't have setter
-
-    // bag.name = "bag that got messed with" // Does not work! setter is private
-
-
-}

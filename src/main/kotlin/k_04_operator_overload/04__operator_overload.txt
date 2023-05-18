@@ -1,0 +1,30 @@
+
+
+
+
+### 04 - Operator overload ###
+
+# Basic idea:
+
+Allow reassignment of operators such as
++
+-
++=
+++
+[i]
+<
+...and more
+
+
+For example Set<Person> + Person ====(becomes)===> Set<Person> (with the person included)
+The "+" symbol is redefined.
+
+
+In java this is impossible*
+
+
+Can be abused (c++ anyone?)
+Can also be used for good.
+Let's look at some examples
+
+
