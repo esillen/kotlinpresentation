@@ -10,7 +10,9 @@ it provides compilation errors if the code path does not exhaust all options.
 
 
 
-Let's look at a great use case
-We want to handle results from a request.
+Let's look at a great use case:
+
+
+We want to handle results from an API request.
 Anyone who worked at [internal project] should listen extra carefully!
 

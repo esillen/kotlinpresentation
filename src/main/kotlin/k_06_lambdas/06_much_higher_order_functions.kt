@@ -1,8 +1,6 @@
 package k_06_lambdas
 
 
-// TODO: exempel: middleware
-
 // Remember kotlin function type syntax.
 // (...ArgumentTypes) -> ResultType
 

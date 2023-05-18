@@ -1,0 +1,18 @@
+
+
+
+
+### 06 - Higher order functions
+
+
+# Basic idea:
+
+Allow for function to accept function as argument
+
+
+
+
+Unlike Java, functions have specific type syntax and is a first class citizen in Kotlin.
+
+syntax:
+(..Argument types..) -> Output type

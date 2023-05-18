@@ -1,12 +1,19 @@
-package k_01_syntax
+package k_01_basics_and_syntax
 
-// Class declaration with primary constructor (this is enough)
+// CLASSES
+
+
+
+// Class declaration with primary constructor
 class User(val username : String, val email: String, val id: Long)
+
 
 // Instantiating a new User object
 val user = User("esillen", "esillen@mail.com", 1337)
 
 
+// All classes are final by default.
+// class SuperUser() : User("asdf", "sdf",123)  // Not allowed!
 
 
 
@@ -23,7 +30,7 @@ class Monster(val health : Int, val name : String) {
     var healthLeft : Int = health
 
 
-    // A secondary constructor can be added (very seldom needed, try to avoid)
+    // More (secondary) constructors can be added
     constructor(health: Int, name : String, healthLeft: Int) : this(health, name) {
         this.healthLeft = healthLeft
     }
@@ -38,12 +45,12 @@ class Monster(val health : Int, val name : String) {
     // member function
     fun takeDamage(damage : Int) {
         healthLeft -= damage
-        if (healthLeft < 0) {
+        if (healthLeft <= 0) {
             die()
         }
     }
 
-    // functions are public but closed by default
+    // member functions are public and closed by default
     private fun die() {
         println("Urrrrgh... Tell my children that I love them!")
     }
@@ -52,8 +59,10 @@ class Monster(val health : Int, val name : String) {
 
 
 // Instantiate Monsters
-val seal = Monster(10, "Seal")
-val ox = Monster(name = "Ox", health = 100) // Can change position by naming variables
+val seal = Monster(10, "Seal") // Normal positional assignment
+
+val ox = Monster(name = "Ox", health = 100) // By naming variables (I prefer this style). Can change position
+
 val damagedLion = Monster(1000, "Lion", 10) // Using the secondary constructor
 
 
@@ -82,7 +91,7 @@ val hero =  object : Hero {
 
 
 
-// We can also create an arbitrary object that doesn't implement anything.
+// We can also create an object that doesn't implement anything.
 object World {
     val name = "Narnia"
 
@@ -93,7 +102,14 @@ object World {
 
 
 fun main() {
-
     World.presentToUser() // Use the object immediately!
-
 }
+
+
+// data class. Gives toString(), equals(), hashcode().
+// Like java's record but
+// - can have mutable fields
+// - has copy()
+// - can extend other classes
+// - can have instance variables and complex logic (domain object candidate?)
+data class Player(val name: String, val score: Int)

@@ -17,11 +17,10 @@ data class Vector2(val x : Double, val y: Double) {
 }
 
 fun main() {
-    val start = Vector2(0.0, 0.0)
-    start + Vector2(4.0, 0.0) + Vector2(-4.0, 5.0) + Vector2(0.0, -5.0)
 
-    // Our formula tells us to do (1,1) * 5 + (1,1) * 7 + (1,1) * 9
+    // Our formula tells us to do (1,1) * 4 + (1,1) * 5 + (1,1) * 6
     val ones = Vector2(1.0, 1.0)
-    val result = ones * 5.0 + ones * 7.0 + ones * 9.0
-    println(result)
+    val result = ones * 4.0 + ones * 5.0 + ones * 6.0
+
+    println(result) // Should be (15, 15)
 }

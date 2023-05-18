@@ -45,7 +45,7 @@ This is a presentation about Kotlin that runs well inside IntelliJ.
   - null pointer exceptions
   - some threading issues
 - ... while still easy to read due to e.g. smart casts
-- function type syntax makes you use lambdas all the time to great benefit of everyone
+- function type syntax
 - more natural coding philosophy than Java such as top level declarations and object
 - it is a jvm language! Real smooth interoperability with Java!
 - everything else I said in this presentation
@@ -56,8 +56,7 @@ This is a presentation about Kotlin that runs well inside IntelliJ.
   - kotlin native (haven't tried this but internet says so)
   - kotlin type safe builder pattern (great to use but not easy to implement right)
 - not huge adoption outside android and hipster backend developers
-- a little counter-intuitive to learn coming from Java
-- perhaps too many cool features?
+- a little counter-intuitive to learn coming from Java and more keywords and concepts you must know
 - mature libraries written to work with Java sometimes need you to break best practices in kotlin (such as using val)
 
 

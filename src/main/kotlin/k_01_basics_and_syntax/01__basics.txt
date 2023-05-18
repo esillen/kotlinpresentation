@@ -1,0 +1,30 @@
+
+
+## Kotlin basics
+
+
+
+A modern language made by JetBrains
+Primary architect is Russian, he's against the invasion
+
+
+Runs on JVM
+Can compile and run alongside Java
+
+(There are more build targets)
+
+
+
+2016 - Kotlin 1.0
+
+2017 - Kotlin receives first class support for Android
+
+2019 - Kotlin is now preferred language for Android
+
+
+
+Many great ideas from other languages such as C#
+Best package of good ideas for general purpose programming that I've encountered
+
+
+

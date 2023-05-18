@@ -31,12 +31,13 @@ public class Vector2 {
 
         Vector2 ones = new Vector2(1,1);
 
-        // Our formula tells us to do (1,1) * 5 + (1,1) * 7 + (1,1) * 9
-        Vector2 wrongResult = ones.multiply(5).add(ones).multiply(7).add(ones).multiply(9); // Wrong!! Method calls doesn't respect multiplication precedence
+        // Our formula tells us to do (1,1) * 4 + (1,1) * 5 + (1,1) * 6
+        Vector2 wrongResult = ones.multiply(4).add(ones).multiply(5).add(ones).multiply(6);
+        // Wrong!! Method calls doesn't respect multiplication precedence over addition
 
-        Vector2 correctResult = ones.multiply(5)
-                .add(ones.multiply(7))
-                .add(ones.multiply(9)); // Correct but can get messy with parentheses
+        Vector2 correctResult = ones.multiply(4)
+                .add(ones.multiply(5))
+                .add(ones.multiply(6)); // Correct but can get messy with parentheses
 
         System.out.println(wrongResult);
         System.out.println(correctResult);

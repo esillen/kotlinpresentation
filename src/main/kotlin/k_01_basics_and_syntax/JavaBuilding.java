@@ -1,4 +1,4 @@
-package k_01_syntax;
+package k_01_basics_and_syntax;
 
 
 

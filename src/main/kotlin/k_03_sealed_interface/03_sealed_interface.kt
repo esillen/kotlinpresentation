@@ -6,20 +6,11 @@ sealed interface Result
 
 
 
-// Quick new kotlin feature: data class. Gives toString(), equals(), hashcode().
-// Like java's record but
-// - can have mutable fields
-// - has copy()
-// - can extend other classes
-// - can have instance variables and complex logic (domain object candidate?)
 data class Failure(val error : String) : Result
 data class Success(val data : String) : Result
 
 
 
-
-// NOTE: add this later
-//data class AnotherTypeOfResult(val errorCode : String, val moreData : String) : Result
 
 
 
@@ -53,4 +44,8 @@ fun main() {
         // else -> println("Huh? This is not possible!") // else not needed for sealed interface!
     }
 }
+
+
+// NOTE: add this and watch the "when" clause break
+// data class AnotherTypeOfResult(val errorCode : String, val moreData : String) : Result
 

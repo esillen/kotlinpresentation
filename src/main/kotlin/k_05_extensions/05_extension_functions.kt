@@ -1,6 +1,6 @@
 package k_05_extensions
 
-import k_05_extensions.person.Person
+import k_05_extensions.person.Person // Import from another package
 
 
 val erik = Person("Erik", mutableSetOf())
@@ -14,10 +14,13 @@ fun Person.addFriend(newFriend : Person) {
 }
 
 // In Java you would probably do something like:
-// private static void int addFriendToPerson(Person person, Person otherPerson) {...}
+// private static void int addFriendToPerson(Person person, Person friend) {
+//     ...
+// }
 
-// Problems: Who's the target? First argument? That's just convention.
-// You also need to be more specific with naming or cause confusion.
+// Problems:
+// Who's the target? First argument? That's just convention.
+// You need to be more specific with naming or cause confusion.
 
 
 
@@ -34,6 +37,7 @@ fun Set<Person>.calcNumFriends() : Int {
         it.friends.size
     }
 }
+
 
 
 fun main() {

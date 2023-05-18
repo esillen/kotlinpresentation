@@ -4,18 +4,18 @@ class MyStruct<T>(size : Int) {
 
     private val items  = Array<Any?>(size){}
 
-    operator fun get(index : Int) : T {
+    operator fun get(index : Int) : T { // Overrides object[i]
         if (items[index] == null) {
             throw IllegalAccessException("Not yet populated!")
         }
         return items[index] as T
     }
 
-    operator fun set(index : Int, item : T) {
+    operator fun set(index : Int, item : T) { // overrides object[i] = something
         items[index] = item
     }
 
-    operator fun contains(item : T) : Boolean {
+    operator fun contains(item : T) : Boolean { // overrides "in"
         return items.contains(item)
     }
 

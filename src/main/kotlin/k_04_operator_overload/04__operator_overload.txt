@@ -6,7 +6,7 @@
 
 # Basic idea:
 
-Allow reassignment of operators such as
+Allow redefinition of operators such as
 +
 -
 +=
@@ -16,15 +16,18 @@ Allow reassignment of operators such as
 ...and more
 
 
-For example Set<Person> + Person ====(becomes)===> Set<Person> (with the person included)
+For example Set<Person> + Person ====(becomes)====> Set<Person> (with the person included)
 The "+" symbol is redefined.
 
 
 In java this is impossible*
+Workaround is Set<Person>.add(Person) ====(becomes)====> Set<Person>
 
 
-Can be abused (c++ anyone?)
+Can be abused (c++)
 Can also be used for good.
+
+
 Let's look at some examples
 
 

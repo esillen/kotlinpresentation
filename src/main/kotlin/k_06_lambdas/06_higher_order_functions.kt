@@ -4,8 +4,7 @@ import java.util.*
 
 fun main() {
 
-    // Kotlin has a function type.
-    // Syntax: (...ArgumentTypes) -> ResultType
+    // Function type syntax: (...ArgumentTypes) -> ResultType
 
 
     fun mapListOfStrings(listOfStrings : List<String>, mapFunction: (String) -> Any): List<Any> {

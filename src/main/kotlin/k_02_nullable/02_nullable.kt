@@ -9,25 +9,22 @@ fun main() {
 
         fun doSomething() {
 
-            //val middleNameRef : String = middleName // Does not work!
+            // val middleNameRef : String = middleName // Does not work!
 
-            val nullableFirstNameRef : String? = firstName // nullable assignment from normal works but IntelliJ complains
+            // val nullableFirstNameRef : String? = firstName // to nullable assignment works with warning
 
-            if (firstName == null) { // Null equality works but IntelliJ complains
+            // if (firstName == null) { // Null equality works with warning
                 // ... Do stuff ...
-            }
+            //}
         }
 
     }
 
-    val pelle = Person("Pelle", null, "Svensson")
-    val jossan = Person("Jossan", "Marit", "Svensdotter")
 
 
 
 
-
-
+    // Example of usefulness
     fun giveBirth(parent: Person, gender : String, middleName: String?) : Person {
         val childFirstName = if (gender == "boy") {
             parent.firstName + "sson"
@@ -38,7 +35,7 @@ fun main() {
         }
         return Person(childFirstName, middleName, parent.lastName)
     }
-    // In Java you would have to make sure that firstName and lastName is never null. Something like this:
+    // In Java, you would have to make sure that firstName and lastName is never null. Something like this:
 
     // if (parent.firstName != null && parent.lastName != null) {
     //   ... do stuff ...
@@ -50,10 +47,10 @@ fun main() {
     // What do you do if something is null?
     // What if it becomes null in another thread AFTER your null check?
 
-    // Best answer is to "just write good code" but Kotlin avoids this by having non-nullable (and immutable) be the default.
-    // And strongly guarding code not written this way
+    // Best answer is to "write good code" but Kotlin avoids this by having non-nullable (and immutable) be the default.
+    // Kotlin guards and seeks attention to code not written that way
 
-    // Yes @NotNull etc. exists, but they are weak guards that only work if used everywhere. And they're ugly.
+    // Yes @NotNull etc. exists, but they are weak guards. And they're ugly. And not part of the language.
 
 
 
@@ -80,6 +77,7 @@ fun main() {
 
 
     // And last, if you want to, you can get the null pointer exception with the !! (bang-bang) operator:
+    val pelle = Person("Pelle", null, "Svensson")
     println(pelle.middleName!!)
 
     // Use of !! is strongly discouraged.
